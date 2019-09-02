@@ -12,6 +12,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
+//METODOS DO SEQUELIZE
+
 app.post('/register', async (req, res) => {
     const user = await User.create(req.body);
     res.json(user);
