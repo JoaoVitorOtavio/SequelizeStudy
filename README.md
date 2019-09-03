@@ -180,6 +180,7 @@ in the "index.js" on project root, and execute the "index.js" with the command "
 TO CREATE A CRUD FOR USERS USE THE FOLLOWING COMMANDS IN "index.js" ON THE PROJECT ROOT:
 
  ----> CREATE
+ 
       "app.post('/register', async (req, res) => {
           const user = await User.create(req.body);
           res.json(user);
@@ -187,6 +188,7 @@ TO CREATE A CRUD FOR USERS USE THE FOLLOWING COMMANDS IN "index.js" ON THE PROJE
         
        
  ----> READ BY ID
+ 
         app.get('/find/:id', async (req, res) => {
             const user = await User.findByPk(req.params.id)
             res.json(user);
