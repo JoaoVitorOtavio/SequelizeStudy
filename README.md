@@ -7,7 +7,7 @@ its a tutorial from rocketseat -> https://blog.rocketseat.com.br/nodejs-express-
 
 3 --> Then, create a index.js in project root with: 
 
-         "const express = require('express');
+         const express = require('express');
 
           const app = express();
 
@@ -17,7 +17,7 @@ its a tutorial from rocketseat -> https://blog.rocketseat.com.br/nodejs-express-
            res.send('Hello World!');
           });
 
-          app.listen(3000);"
+          app.listen(3000);
           
 TO INIT THE PROCJET JUST WRITE IN THE TERMINAL "node index.js"
 
@@ -28,13 +28,13 @@ THIS PROCCESS WILL CREATE SOME FOLDERS (config , migrations, models and seeders)
 
 5 --> the first thing is rename the archive "config.json" in folder "config" to "database.js" and configure your database
 
-        "module.exports = {
+        module.exports = {
           username: 'root',
           password: 'root',
           database: 'crud_sequelize',
           host: '127.0.0.1',
           dialect: /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
-        }"
+        }
         
 
 6 --> Next you will need to create another two folders in project root "database" and "app", so move the folders "migrations" and 
@@ -58,14 +58,14 @@ THIS PROCCESS WILL CREATE SOME FOLDERS (config , migrations, models and seeders)
             
 7 --> Next you will create an archive ".sequelizerc" to find the archives and folders to where we move, and inside this archive:
       
-      "const path = require('path');
+      const path = require('path');
 
         module.exports = {
           'config': path.resolve('config', 'database.js'),
           'models-path': path.resolve('app', 'models'),
           'seeders-path': path.resolve('database', 'seeders'),
           'migrations-path': path.resolve('database', 'migrations'),
-        };"
+        };
         
         
         
@@ -73,7 +73,7 @@ THIS PROCCESS WILL CREATE SOME FOLDERS (config , migrations, models and seeders)
 first we will configure the archive "index.js" in "app/models/index.js", this archive is responsible for import other models from 
 your aplication, your code will be like:
 
-      "const fs = require('fs');
+      const fs = require('fs');
         const path = require('path');
         const Sequelize = require('sequelize');
         const config = require('../../config/database.js');
@@ -98,7 +98,7 @@ your aplication, your code will be like:
         db.sequelize = sequelize;
         db.Sequelize = Sequelize;
 
-        module.exports = db;"
+        module.exports = db;
         
   
   
@@ -113,7 +113,7 @@ and "down", the "up" function is the code who will modify the database and the f
 
 10 --> Next step its modify the archive inside "migrations" with our commands to modify the database:
 
-          "module.exports = {
+           module.exports = {
             up: (queryInterface, DataTypes) => {
               return queryInterface.createTable('Users', {
                 id: {
@@ -149,7 +149,7 @@ and "down", the "up" function is the code who will modify the database and the f
             down: (queryInterface) => {
               return queryInterface.dropTable('Users');
             }
-          };"
+          };
           
           
 Now to see if work, lets write in the terminal the commands: "node_modules/.bin/sequelize db:migrate" and check your database, probably
@@ -162,7 +162,7 @@ executed, its essencial when u execute again the same migration, because the mig
 11 --> Now we going to create our model, to start we need to create an archive "user.js" inside the folder "models" (app/models),
 and the content inside this archive is:
 
-        "module.exports = (sequelize, DataTypes) => {
+         module.exports = (sequelize, DataTypes) => {
           const User = sequelize.define('User', {
             name: DataTypes.STRING,
             email: DataTypes.STRING,
@@ -170,7 +170,7 @@ and the content inside this archive is:
           });
 
             return User;
-         }"
+         }
    
   
 12 --> Now we just need to import the USER from models in "index.js" on project root: "const { User } = require('./app/models');"
