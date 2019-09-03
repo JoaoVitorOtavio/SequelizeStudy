@@ -58,7 +58,7 @@ THIS PROCCESS WILL CREATE SOME FOLDERS (config , migrations, models and seeders)
             
 7 --> Next you will create an archive ".sequelizerc" to find the archives and folders to where we move, and inside this archive:
       
-      const path = require('path');
+       const path = require('path');
 
         module.exports = {
           'config': path.resolve('config', 'database.js'),
@@ -73,7 +73,7 @@ THIS PROCCESS WILL CREATE SOME FOLDERS (config , migrations, models and seeders)
 first we will configure the archive "index.js" in "app/models/index.js", this archive is responsible for import other models from 
 your aplication, your code will be like:
 
-      const fs = require('fs');
+        const fs = require('fs');
         const path = require('path');
         const Sequelize = require('sequelize');
         const config = require('../../config/database.js');
@@ -181,10 +181,10 @@ TO CREATE A CRUD FOR USERS USE THE FOLLOWING COMMANDS IN "index.js" ON THE PROJE
 
  ----> CREATE
  
-      "app.post('/register', async (req, res) => {
+       app.post('/register', async (req, res) => {
           const user = await User.create(req.body);
           res.json(user);
-        });" 
+        });
         
        
  ----> READ BY ID
