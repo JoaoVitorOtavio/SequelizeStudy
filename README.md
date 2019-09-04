@@ -5,7 +5,7 @@ its a tutorial from rocketseat -> https://blog.rocketseat.com.br/nodejs-express-
 
 2 --> install dependencies 
 
-npm install sequelize express pg pg-hstore " after that "npm install -D sequelize-cli
+         npm install sequelize express pg pg-hstore " after that "npm install -D sequelize-cli
 
 3 --> Then, create a index.js in project root with: 
 
@@ -25,7 +25,7 @@ TO INIT THE PROCJET JUST WRITE IN THE TERMINAL "node index.js"
 
 4 --> to create a initial settings from sequelize write in the terminal 
 
-"./node_modules/.bin/sequelize init"
+         "./node_modules/.bin/sequelize init"
 
 (If u can't write that, u probably forgot to install sequelize-cli, so write in the terminal "npm install -D sequelize-cli")
 
@@ -157,7 +157,11 @@ and "down", the "up" function is the code who will modify the database and the f
           };
           
           
-Now to see if work, lets write in the terminal the commands: "node_modules/.bin/sequelize db:migrate" and check your database, probably
+Now to see if work, lets write in the terminal the commands: 
+
+                  node_modules/.bin/sequelize db:migrate" node_modules/.bin/sequelize db:migrate your-migration-name
+                  
+ and check your database, probably
 will have two another tables, "SequelizeMeta" and "Users", "SequelizeMeta" is the table to save informations about migration who was
 executed, its essencial when u execute again the same migration, because the migration don't execute everything just the new things.
 
@@ -234,3 +238,35 @@ TO CREATE A CRUD FOR USERS USE THE FOLLOWING COMMANDS IN "index.js" ON THE PROJE
             })
             res.json(user);
         });
+
+
+----------> EXEMPLE MIGRATION TO UPDATE A TABLE WITH A NEW COLUMN, write this line in terminal to create a new migration:
+
+           node_modules/.bin/sequelize migration:create --name=your-migration-name
+          
+ AND INSIDE THIS MIGRATION:
+         
+         module.exports = {
+           up: (queryInterface, Sequelize) => {
+             return queryInterface.addColumn(
+               'your-database-table', 'new-column-name', Sequelize.INTEGER
+               );
+           },
+
+           down: (queryInterface) => {
+             return queryInterface.removeColumn(
+               'your-database-table',
+               'new-column-name'
+             );
+           }
+         };
+         
+TO EXECUTE THIS MIGRATION YOU NEED TO WRITE IN TERMINAL:
+         
+          node_modules/.bin/sequelize db:migrate your-migration-name
+          
+TO ROLLBACK YOUR MIGRATION, RUN IN TERMINAL:
+         
+          node_modules/.bin/sequelize db:migrate:undo your-migration-name
+          
+  
