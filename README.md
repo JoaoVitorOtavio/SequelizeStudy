@@ -3,7 +3,9 @@ its a tutorial from rocketseat -> https://blog.rocketseat.com.br/nodejs-express-
 
 1 --> Create a project with "npm init -y"
 
-2 --> install dependencies " npm install sequelize express pg pg-hstore " after that "npm install -D sequelize-cli"
+2 --> install dependencies 
+
+npm install sequelize express pg pg-hstore " after that "npm install -D sequelize-cli
 
 3 --> Then, create a index.js in project root with: 
 
@@ -21,7 +23,10 @@ its a tutorial from rocketseat -> https://blog.rocketseat.com.br/nodejs-express-
           
 TO INIT THE PROCJET JUST WRITE IN THE TERMINAL "node index.js"
 
-4 --> to create a initial settings from sequelize write in the terminal "./node_modules/.bin/sequelize init"
+4 --> to create a initial settings from sequelize write in the terminal 
+
+"./node_modules/.bin/sequelize init"
+
 (If u can't write that, u probably forgot to install sequelize-cli, so write in the terminal "npm install -D sequelize-cli")
 
 THIS PROCCESS WILL CREATE SOME FOLDERS (config , migrations, models and seeders)
@@ -105,7 +110,7 @@ your aplication, your code will be like:
 9 --> Now we need to create our migrations, the migrations are the archives where we save versions from changes in aplications,
 migrations save this changes, To create our migration we need to write this commands in terminal:
     
-    "node_modules/.bin/sequelize migration:create --name=create-users"
+    node_modules/.bin/sequelize migration:create --name=create-users
     
 when u execute this commands, an archive will be created on your "migrations" folder, inside this archive will have two functions "up" 
 and "down", the "up" function is the code who will modify the database and the function "down" its a rollback.
