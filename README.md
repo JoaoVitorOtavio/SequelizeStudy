@@ -1,7 +1,9 @@
 # SequelizeStudy
 its a tutorial from rocketseat -> https://blog.rocketseat.com.br/nodejs-express-sequelize/
 
-1 --> Create a project with "npm init -y"
+1 --> Create a project with 
+         
+         npm init -y
 
 2 --> install dependencies 
 
@@ -21,7 +23,9 @@ its a tutorial from rocketseat -> https://blog.rocketseat.com.br/nodejs-express-
 
           app.listen(3000);
           
-TO INIT THE PROCJET JUST WRITE IN THE TERMINAL "node index.js"
+TO INIT THE PROJECT JUST WRITE IN THE TERMINAL 
+
+         node index.js
 
 4 --> to create a initial settings from sequelize write in the terminal 
 
