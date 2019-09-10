@@ -32,14 +32,14 @@ app.get('/findall', async (req, res) => {
     res.json(user);
 });
 
-app.put('/update/:id', async(req, res) => {
+app.put('/update/:id', async (req, res) => {
     const user = await User.update({
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password
-        },{
-            where: { id: req.params.id }
-        }
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password
+    }, {
+        where: { id: req.params.id }
+    }
     )
     res.json(user);
 });
@@ -61,7 +61,12 @@ app.post('/registerShop', async (req, res) => {
 });
 
 app.get('/findShop/:id', async (req, res) => {
-    const shop = await Shop.findByPk(req.params.id)
+    const shop = await Shop.findByPk(req.params.id, 
+        {
+            include:[{
+                model:Coffe
+            }]
+        })
     res.json(shop);
 });
 
@@ -70,17 +75,17 @@ app.get('/findallShop', async (req, res) => {
     res.json(shop);
 });
 
-app.put('/updateShop/:id', async(req, res) => {
+app.put('/updateShop/:id', async (req, res) => {
     const shop = await Shop.update({
-            name: req.body.name,
-        },{
-            where: { id: req.params.id }
-        }
+        name: req.body.name,
+    }, {
+        where: { id: req.params.id }
+    }
     )
     res.json(shop);
 });
 
-app.get('/getCoffeesWithShop', async(req, res) => {
+app.get('/getCoffeesWithShop', async (req, res) => {
     const shop = await Shop.findAll();
     const coffee = await shop.Coffe.findall();
     res.json(coffee);
@@ -98,26 +103,34 @@ app.delete('/deleteShop/:id', async (req, res) => {
 
 //METODOS DO SEQUELIZE CRUD DE COFFE
 app.post('/registerCoffe', async (req, res) => {
+    const shop = await Shop.findByPk(req.body.ShopId)
     const coffe = await Coffe.create(req.body);
+    coffe.setShop(shop)
+    console.log(coffe.Shop)
     res.json(coffe);
 });
 
 app.get('/findCoffe/:id', async (req, res) => {
     const coffe = await Coffe.findByPk(req.params.id)
+    console.log(coffe)
     res.json(coffe);
 });
 
 app.get('/findallCoffe', async (req, res) => {
-    const coffe = await Coffe.findAll()
+    const coffe = await Coffe.findAll(
+        {include: [
+            'Shop'
+        ]}
+    )
     res.json(coffe);
 });
 
-app.put('/updateCoffe/:id', async(req, res) => {
+app.put('/updateCoffe/:id', async (req, res) => {
     const coffe = await Coffe.update({
-            name: req.body.name,
-        },{
-            where: { id: req.params.id }
-        }
+        name: req.body.name,
+    }, {
+        where: { id: req.params.id }
+    }
     )
     res.json(coffe);
 });
