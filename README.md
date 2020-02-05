@@ -277,4 +277,8 @@ OU APENAS ESSE CODIGO PRA DAR UM ROLLBACK NA ULTIMA MIGRATION CRIADA
 
          sequelize db:migrate:undo
   
-Caso algum dia de erro que a coluna deletedAt does not exist, basta colocar 'paranoid: false' no model, junto com os outros atributos, caso nao tenha o createdAt e o updatedAt, é bom colocar na mao tb dentro da model, pois uma hora vai dar merda
+Caso algum dia de erro que a coluna deletedAt does not exist, basta colocar 'paranoid: false' no model, junto com os outros atributos, caso nao tenha o createdAt e o updatedAt, é bom colocar na mao tb dentro da model, pois uma hora vai dar merda.
+
+         createdAt: Sequelize.DATE,
+         updatedAt: Sequelize.DATE,
+         paranoid: false
