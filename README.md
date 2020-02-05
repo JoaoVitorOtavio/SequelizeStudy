@@ -277,9 +277,25 @@ OU APENAS ESSE CODIGO PRA DAR UM ROLLBACK NA ULTIMA MIGRATION CRIADA
 
          sequelize db:migrate:undo
          
-Caso algum dia de erro que a coluna deletedAt does not exist, basta colocar 'paranoid: false' junto na query:
+Caso algum dia de erro que a coluna deletedAt does not exist, basta colocar 'paranoid: false' na model como segundo parametro:
 
-         await DefaultsActivities.findAll({paranoid:false}))
+         module.exports = (app, db) => {
+           const DefaultsActivities = db.define(DEFAULT_ACTIVITIES_TABLE, {
+             begin: Sequelize.TIME,
+             end: Sequelize.TIME,
+             interval: Sequelize.TIME,
+             defaultIs: Sequelize.BOOLEAN,
+             visible: Sequelize.BOOLEAN,
+             user: Sequelize.INTEGER,
+             fixedTime: Sequelize.TIME,
+             title: Sequelize.STRING,
+             status: Sequelize.BOOLEAN,
+             type: Sequelize.STRING,
+             dayWeek: Sequelize.STRING,
+             createdAt: Sequelize.DATE,
+             updatedAt: Sequelize.DATE,
+
+           }, {paranoid:false});
          
 Junto com os outros atributos, caso nao tenha o createdAt e o updatedAt, é bom colocar na mao tb dentro da model, pois uma hora vai dar merda.
 
