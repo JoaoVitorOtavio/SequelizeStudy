@@ -273,4 +273,6 @@ TO ROLLBACK YOUR MIGRATION, RUN IN TERMINAL:
          
           node_modules/.bin/sequelize db:migrate:undo your-migration-name
           
+OU APENAS ESSE CODIGO PRA DAR UM ROLLBACK NA ULTIMA MIGRATION CRIADA
+          sequelize db:migrate:undo
   
