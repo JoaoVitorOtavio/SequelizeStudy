@@ -301,3 +301,17 @@ Junto com os outros atributos, caso nao tenha o createdAt e o updatedAt, é bom 
 
          createdAt: Sequelize.DATE,
          updatedAt: Sequelize.DATE
+
+CRIAÇÃO DE UMA NOVA MIGRATION PARA ADICIONAR UMA COLUNA EM UMA TABELA...
+
+         sequelize migration:create --name name_of_your_migration
+         
+         module.exports = {
+           up: async (queryInterface, Sequelize) => {
+             await queryInterface.addColumn(YOUR_TABLE, 'COLUNM_NAME', { type: Sequelize.TEXT })
+           },
+
+           down: async (queryInterface, Sequelize) => {
+             await queryInterface.removeColumn(YOUR_TABLE, 'COLUNM_NAME')
+           }  
+         };
