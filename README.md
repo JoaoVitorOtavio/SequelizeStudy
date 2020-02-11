@@ -315,3 +315,14 @@ CRIAÇÃO DE UMA NOVA MIGRATION PARA ADICIONAR UMA COLUNA EM UMA TABELA...
              await queryInterface.removeColumn(YOUR_TABLE, 'COLUNM_NAME')
            }  
          };
+
+CASO FOR FAZER UM UPDATE COM SEQUELIZE, POR PADRAO QUANDO ALTERADO DETERMINADO ITENS COMO RESPOSTA ELE RETORN UM BOOLEANO (0,1) PARA CASO DE SUCESSO OU FALHA, CASO QUEIRA QUE TRAGA OS VALORES QUE FORAM ALTERADOR NECESSITA COLOCAR 'returning:true' COMO PARAMETRO DO UPDATE
+
+          const update = await TABELA.update({
+                 VALOR1,
+                 VALOR2,
+                 VALOR3
+               }, {
+                 where: { id: idQueQuerMudar },
+                 returning: true //AQUI É ONDE A MAGICA ACONTECE
+               })
