@@ -1,4 +1,5 @@
 # SequelizeStudy
+https://prod.liveshare.vsengsaas.visualstudio.com/join?873AE633916BD4208682DC9C2BDAF32E169D
 its a tutorial from rocketseat -> https://blog.rocketseat.com.br/nodejs-express-sequelize/
 
 1 --> Create a project with 
